@@ -16,11 +16,13 @@ const forecast = (long, lat, callback) => {
       } else {
         const degrees = body.currently.temperature,
           rainChance = body.currently.precipProbability,
-          dayType = body.daily.data[0].summary;
+          dayType = body.daily.data[0].summary,
+          highTemp = body.daily.data[0].temperatureHigh,
+          lowTemp = body.daily.data[0].temperatureLow;
 
         callback(
           undefined,
-          `${dayType} It is currently ${degrees} degrees out. There is a ${rainChance}% chance of rain`
+          `${dayType} It is currently ${degrees} degrees out. This high today is ${highTemp} with a low of ${lowTemp}. There is a ${rainChance}% chance of rain`
         );
       }
     }
